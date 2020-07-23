@@ -1,0 +1,248 @@
+{
+  "contracts": {
+    "DaoSmartContract": {
+      "address": "0x082fBaF3Bda81d3256061170cBa9c426E495D197",
+      "constructorCode": "608060405234801561001057600080fd5b50613107806100206000396000f3fe",
+      "bodyBytecodeHash": "8c98e1e0759cce5123f13772e0bd2cc47ba67b73be1d74c2284e93c2da2eba9b",
+      "localBytecodeHash": "84bb81d6a2f7925b643af47b16d387b8d1abb3dba7cc88dd04cb2748ea880152",
+      "deployedBytecodeHash": "84bb81d6a2f7925b643af47b16d387b8d1abb3dba7cc88dd04cb2748ea880152",
+      "types": {
+        "t_bool": {
+          "id": "t_bool",
+          "kind": "elementary",
+          "label": "bool"
+        },
+        "t_uint256": {
+          "id": "t_uint256",
+          "kind": "elementary",
+          "label": "uint256"
+        },
+        "t_array:50<t_uint256>": {
+          "id": "t_array:50<t_uint256>",
+          "valueType": "t_uint256",
+          "length": "50",
+          "kind": "array",
+          "label": "uint256[50]"
+        },
+        "t_address": {
+          "id": "t_address",
+          "kind": "elementary",
+          "label": "address"
+        },
+        "t_array:49<t_uint256>": {
+          "id": "t_array:49<t_uint256>",
+          "valueType": "t_uint256",
+          "length": "49",
+          "kind": "array",
+          "label": "uint256[49]"
+        },
+        "t_struct<DaoSmartContract.Proposal>": {
+          "id": "t_struct<DaoSmartContract.Proposal>",
+          "kind": "struct",
+          "label": "DaoSmartContract.Proposal",
+          "members": [
+            {
+              "label": "fundsRequested",
+              "astId": 665,
+              "type": "t_uint256",
+              "src": "1034:22:6"
+            },
+            {
+              "label": "initiationTimestamp",
+              "astId": 667,
+              "type": "t_uint256",
+              "src": "1066:27:6"
+            },
+            {
+              "label": "completionTimestamp",
+              "astId": 669,
+              "type": "t_uint256",
+              "src": "1103:27:6"
+            },
+            {
+              "label": "colletralAmount",
+              "astId": 671,
+              "type": "t_uint256",
+              "src": "1140:23:6"
+            },
+            {
+              "label": "totalMilestones",
+              "astId": 673,
+              "type": "t_uint256",
+              "src": "1173:23:6"
+            },
+            {
+              "label": "completedMilestones",
+              "astId": 675,
+              "type": "t_uint256",
+              "src": "1206:27:6"
+            },
+            {
+              "label": "status",
+              "astId": 677,
+              "type": "t_uint256",
+              "src": "1243:14:6"
+            },
+            {
+              "label": "totalVotes",
+              "astId": 679,
+              "type": "t_uint256",
+              "src": "1267:18:6"
+            },
+            {
+              "label": "proposer",
+              "astId": 681,
+              "type": "t_address",
+              "src": "1295:16:6"
+            }
+          ]
+        },
+        "t_mapping<t_struct<DaoSmartContract.Proposal>>": {
+          "id": "t_mapping<t_struct<DaoSmartContract.Proposal>>",
+          "valueType": "t_struct<DaoSmartContract.Proposal>",
+          "label": "mapping(key => DaoSmartContract.Proposal)",
+          "kind": "mapping"
+        },
+        "t_mapping<t_bool>": {
+          "id": "t_mapping<t_bool>",
+          "valueType": "t_bool",
+          "label": "mapping(key => bool)",
+          "kind": "mapping"
+        }
+      },
+      "storage": [
+        {
+          "contract": "Initializable",
+          "path": "@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol",
+          "label": "initialized",
+          "astId": 50,
+          "type": "t_bool",
+          "src": "757:24:1"
+        },
+        {
+          "contract": "Initializable",
+          "path": "@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol",
+          "label": "initializing",
+          "astId": 53,
+          "type": "t_bool",
+          "src": "876:25:1"
+        },
+        {
+          "contract": "Initializable",
+          "path": "@openzeppelin/contracts-ethereum-package/contracts/Initializable.sol",
+          "label": "______gap",
+          "astId": 118,
+          "type": "t_array:50<t_uint256>",
+          "src": "1982:29:1"
+        },
+        {
+          "contract": "ContextUpgradeSafe",
+          "path": "@openzeppelin/contracts-ethereum-package/contracts/GSN/Context.sol",
+          "label": "__gap",
+          "astId": 43,
+          "type": "t_array:50<t_uint256>",
+          "src": "1277:25:0"
+        },
+        {
+          "contract": "OwnableUpgradeSafe",
+          "path": "@openzeppelin/contracts-ethereum-package/contracts/access/Ownable.sol",
+          "label": "_owner",
+          "astId": 130,
+          "type": "t_address",
+          "src": "651:22:2"
+        },
+        {
+          "contract": "OwnableUpgradeSafe",
+          "path": "@openzeppelin/contracts-ethereum-package/contracts/access/Ownable.sol",
+          "label": "__gap",
+          "astId": 248,
+          "type": "t_array:49<t_uint256>",
+          "src": "2434:25:2"
+        },
+        {
+          "contract": "PausableUpgradeSafe",
+          "path": "@openzeppelin/contracts-ethereum-package/contracts/utils/Pausable.sol",
+          "label": "_paused",
+          "astId": 544,
+          "type": "t_bool",
+          "src": "825:20:5"
+        },
+        {
+          "contract": "PausableUpgradeSafe",
+          "path": "@openzeppelin/contracts-ethereum-package/contracts/utils/Pausable.sol",
+          "label": "__gap",
+          "astId": 633,
+          "type": "t_array:49<t_uint256>",
+          "src": "2073:25:5"
+        },
+        {
+          "contract": "DaoSmartContract",
+          "path": "contracts/DaoSmartContract.sol",
+          "label": "phnxContractAddress",
+          "astId": 651,
+          "type": "t_address",
+          "src": "806:34:6"
+        },
+        {
+          "contract": "DaoSmartContract",
+          "path": "contracts/DaoSmartContract.sol",
+          "label": "phnxStakingContractAddress",
+          "astId": 653,
+          "type": "t_address",
+          "src": "846:41:6"
+        },
+        {
+          "contract": "DaoSmartContract",
+          "path": "contracts/DaoSmartContract.sol",
+          "label": "proposalList",
+          "astId": 657,
+          "type": "t_mapping<t_struct<DaoSmartContract.Proposal>>",
+          "src": "893:47:6"
+        },
+        {
+          "contract": "DaoSmartContract",
+          "path": "contracts/DaoSmartContract.sol",
+          "label": "votes",
+          "astId": 663,
+          "type": "t_mapping<t_bool>",
+          "src": "946:56:6"
+        }
+      ],
+      "warnings": {
+        "hasConstructor": false,
+        "hasSelfDestruct": false,
+        "hasDelegateCall": false,
+        "hasInitialValuesInDeclarations": false,
+        "uninitializedBaseContracts": [],
+        "storageUncheckedVars": [
+          {
+            "contract": "DaoSmartContract",
+            "path": "contracts/DaoSmartContract.sol",
+            "label": "proposalList",
+            "astId": 657,
+            "type": "t_mapping<t_struct<DaoSmartContract.Proposal>>",
+            "src": "893:47:6"
+          }
+        ],
+        "storageDiff": []
+      }
+    }
+  },
+  "solidityLibs": {},
+  "proxies": {
+    "dao-smart-contract/DaoSmartContract": [
+      {
+        "address": "0x8673A8573aB86934F6A66010dD97e5F8aCFfA2D0",
+        "version": "1.0.0",
+        "implementation": "0x717765dE7851f40D9f8352400BeB321d0cAdCdC3",
+        "admin": "0x0Fb727f3626ed93CAf1D991B53dD0A9707e79370",
+        "kind": "Upgradeable"
+      }
+    ]
+  },
+  "manifestVersion": "2.2",
+  "version": "1.0.0",
+  "proxyAdmin": {
+    "address": "0x0Fb727f3626ed93CAf1D991B53dD0A9707e79370"
+  }
+}

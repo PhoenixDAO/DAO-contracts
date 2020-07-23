@@ -11,6 +11,12 @@ contract DaoSmartContract is OwnableUpgradeSafe, PausableUpgradeSafe {
     using SafeMath for uint256;
 
     enum Status {PENDING, UPVOTE, VOTING, ACTIVE, COMPLETED, REJECTED}
+    // 0 -> pending
+    // 1 -> upvote
+    // 2 -> voting
+    // 3 -> active
+    // 4 -> completed
+    // 5 -> rejected
     address public phnxContractAddress;
     address public phnxStakingContractAddress;
     mapping(string => Proposal) public proposalList;
@@ -86,7 +92,7 @@ contract DaoSmartContract is OwnableUpgradeSafe, PausableUpgradeSafe {
     ) public whenNotPaused {
         require(
             proposalList[_proposalId].proposer == address(0),
-            "zero address"
+            "Proposal already submitted"
         );
         proposalList[_proposalId] = Proposal(
             fundsRequested,
@@ -95,7 +101,7 @@ contract DaoSmartContract is OwnableUpgradeSafe, PausableUpgradeSafe {
             colletralAmount,
             totalMilestones,
             0,
-            uint256(Status.PENDING),
+            0, //status
             0,
             msg.sender
         );
@@ -136,7 +142,7 @@ contract DaoSmartContract is OwnableUpgradeSafe, PausableUpgradeSafe {
         whenNotPaused
     {
         require(
-            proposalList[_proposalId].status == uint256(Status.COMPLETED),
+            proposalList[_proposalId].status == 4,
             "Project status not completed"
         );
         IERC20(phnxContractAddress).transfer(
@@ -154,32 +160,38 @@ contract DaoSmartContract is OwnableUpgradeSafe, PausableUpgradeSafe {
         public
         onlyOwner
     {
+        require(
+            proposalList[_proposalId].proposer != address(0),
+            "proposal not submitted before"
+        );
         uint256 oldStatus = proposalList[_proposalId].status;
         if (
             _status == uint256(Status.UPVOTE) &&
             proposalList[_proposalId].status == uint256(Status.PENDING)
         ) {
-            proposalList[_proposalId].status == uint256(Status.UPVOTE);
+            proposalList[_proposalId].status = uint256(Status.UPVOTE);
         }
 
         if (
             _status == uint256(Status.VOTING) &&
             proposalList[_proposalId].status == uint256(Status.UPVOTE)
         ) {
-            proposalList[_proposalId].status == uint256(Status.VOTING);
+            proposalList[_proposalId].status = uint256(Status.VOTING);
         }
         if (
             _status == uint256(Status.ACTIVE) &&
             proposalList[_proposalId].status == uint256(Status.VOTING)
         ) {
-            proposalList[_proposalId].status == uint256(Status.ACTIVE);
+            proposalList[_proposalId].status = uint256(Status.ACTIVE);
         }
         if (
             _status == uint256(Status.REJECTED) &&
             proposalList[_proposalId].status == uint256(Status.PENDING)
         ) {
-            proposalList[_proposalId].status == uint256(Status.REJECTED);
+            proposalList[_proposalId].status = uint256(Status.REJECTED);
         }
+
+        require(proposalList[_proposalId].status == _status,"Status updated");
         emit ProposalStatusUpdated(
             _proposalId,
             oldStatus,
@@ -192,10 +204,7 @@ contract DaoSmartContract is OwnableUpgradeSafe, PausableUpgradeSafe {
         uint256 _amount,
         uint256 _milestoneNumber
     ) public onlyOwner {
-        require(
-            proposalList[_proposalId].status == uint256(Status.ACTIVE),
-            "status not active"
-        );
+        require(proposalList[_proposalId].status == 3, "status not active");
 
         require(
             proposalList[_proposalId].completedMilestones !=
@@ -223,7 +232,7 @@ contract DaoSmartContract is OwnableUpgradeSafe, PausableUpgradeSafe {
 
         if (proposalList[_proposalId].fundsRequested == 0) {
             uint256 oldStatus = proposalList[_proposalId].status;
-            proposalList[_proposalId].status = uint256(Status.COMPLETED);
+            proposalList[_proposalId].status = 4;
             emit ProposalStatusUpdated(
                 _proposalId,
                 oldStatus,
@@ -238,5 +247,13 @@ contract DaoSmartContract is OwnableUpgradeSafe, PausableUpgradeSafe {
         return (
             DaoStakeContract(phnxStakingContractAddress).baseInterestRate()
         );
+    }
+
+    function pause() public onlyOwner {
+        _pause();
+    }
+
+    function unPause() public onlyOwner {
+        _unpause();
     }
 }

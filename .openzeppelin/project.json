@@ -1,6 +1,8 @@
 {
   "manifestVersion": "2.2",
-  "contracts": {},
+  "contracts": {
+    "DaoSmartContract": "DaoSmartContract"
+  },
   "dependencies": {},
   "name": "dao-smart-contract",
   "version": "1.0.0",

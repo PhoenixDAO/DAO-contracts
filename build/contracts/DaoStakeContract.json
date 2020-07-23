@@ -48,15 +48,15 @@
     "absolutePath": "contracts/DaoStakeInterface.sol",
     "exportedSymbols": {
       "DaoStakeContract": [
-        1295
+        1319
       ]
     },
-    "id": 1296,
+    "id": 1320,
     "license": null,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1280,
+        "id": 1304,
         "literals": [
           "solidity",
           "^",
@@ -73,9 +73,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 1295,
+        "id": 1319,
         "linearizedBaseContracts": [
-          1295
+          1319
         ],
         "name": "DaoStakeContract",
         "nodeType": "ContractDefinition",
@@ -84,7 +84,7 @@
             "body": null,
             "documentation": null,
             "functionSelector": "69619aaf",
-            "id": 1289,
+            "id": 1313,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -92,17 +92,17 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 1285,
+              "id": 1309,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1282,
+                  "id": 1306,
                   "mutability": "mutable",
                   "name": "_altQuantity",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 1289,
+                  "scope": 1313,
                   "src": "76:20:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -111,7 +111,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1281,
+                    "id": 1305,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "76:7:7",
@@ -125,12 +125,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1284,
+                  "id": 1308,
                   "mutability": "mutable",
                   "name": "_days",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 1289,
+                  "scope": 1313,
                   "src": "98:13:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -139,7 +139,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1283,
+                    "id": 1307,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "98:7:7",
@@ -155,17 +155,17 @@
               "src": "75:37:7"
             },
             "returnParameters": {
-              "id": 1288,
+              "id": 1312,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1287,
+                  "id": 1311,
                   "mutability": "mutable",
                   "name": "rewardAmount",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 1289,
+                  "scope": 1313,
                   "src": "147:20:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -174,7 +174,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1286,
+                    "id": 1310,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "147:7:7",
@@ -189,7 +189,7 @@
               ],
               "src": "146:22:7"
             },
-            "scope": 1295,
+            "scope": 1319,
             "src": "58:111:7",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -199,7 +199,7 @@
             "body": null,
             "documentation": null,
             "functionSelector": "afd92762",
-            "id": 1294,
+            "id": 1318,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -207,23 +207,23 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 1290,
+              "id": 1314,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "200:2:7"
             },
             "returnParameters": {
-              "id": 1293,
+              "id": 1317,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1292,
+                  "id": 1316,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 1294,
+                  "scope": 1318,
                   "src": "234:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -232,7 +232,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1291,
+                    "id": 1315,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "234:7:7",
@@ -247,14 +247,14 @@
               ],
               "src": "233:9:7"
             },
-            "scope": 1295,
+            "scope": 1319,
             "src": "175:68:7",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 1296,
+        "scope": 1320,
         "src": "25:220:7"
       }
     ],
