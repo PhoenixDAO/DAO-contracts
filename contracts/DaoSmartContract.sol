@@ -18,9 +18,9 @@ contract DaoSmartContract is OwnableUpgradeSafe, PausableUpgradeSafe {
     // 4 -> completed
     // 5 -> rejected
     address public phnxContractAddress;
-    address public phnxStakingContractAddress;
+    // address public phnxStakingContractAddress;
     mapping(string => Proposal) public proposalList;
-    mapping(address => mapping(string => bool)) public votes;
+    // mapping(address => mapping(string => bool)) public votes;
     struct Proposal {
         uint256 fundsRequested;
         uint256 initiationTimestamp;
@@ -51,7 +51,6 @@ contract DaoSmartContract is OwnableUpgradeSafe, PausableUpgradeSafe {
     event FundsReleased(
         string _proposalId,
         uint256 _amountReleased,
-        uint256 _milestoneNumber,
         address _admin
     );
     event CollateralDeposited(
@@ -64,23 +63,23 @@ contract DaoSmartContract is OwnableUpgradeSafe, PausableUpgradeSafe {
         uint256 _collateralAmount,
         address _proposer
     );
-    event Voted(
-        string _proposalId,
-        uint256 altQuantity,
-        uint256 _days,
-        uint256 rewardAmount
-    );
+    // event Voted(
+    //     string _proposalId,
+    //     uint256 altQuantity,
+    //     uint256 _days,
+    //     uint256 rewardAmount
+    // );
     event CompletedMilestone(
         string _proposalId,
-        uint256 _milestoneNumber,
         uint256 _completedMilestones
     );
 
-    function initialize() external initializer {
+    function initialize(address _phoenixContractAddress) external initializer {
         OwnableUpgradeSafe.__Ownable_init();
         PausableUpgradeSafe.__Pausable_init();
-        phnxContractAddress = 0xfe1b6ABc39E46cEc54d275efB4b29B33be176c2A;
-        phnxStakingContractAddress = 0xe5242650Ed4a1C0bBa33204Efa1ca76772a5544C;
+        // phnxContractAddress = 0xfe1b6ABc39E46cEc54d275efB4b29B33be176c2A;
+        phnxContractAddress = _phoenixContractAddress;
+        // phnxStakingContractAddress = 0xe5242650Ed4a1C0bBa33204Efa1ca76772a5544C;
     }
 
     function submitProposal(
@@ -117,32 +116,32 @@ contract DaoSmartContract is OwnableUpgradeSafe, PausableUpgradeSafe {
         );
     }
 
-    function stake(
-        string calldata _proposalId,
-        uint256 _altQuantity,
-        uint256 _days
-    ) public whenNotPaused returns (uint256 rewardAmount) {
-        require(
-            votes[msg.sender][_proposalId] == false,
-            "already staked once for this proposal"
-        );
-        rewardAmount = DaoStakeContract(phnxStakingContractAddress).stakeALT(
-            _altQuantity,
-            _days
-        );
-        votes[msg.sender][_proposalId] = true;
-        proposalList[_proposalId].totalVotes = proposalList[_proposalId]
-            .totalVotes
-            .add(1);
-        emit Voted(_proposalId, _altQuantity, _days, rewardAmount);
-    }
+    // function stake(
+    //     string calldata _proposalId,
+    //     uint256 _altQuantity,
+    //     uint256 _days
+    // ) public whenNotPaused returns (uint256 rewardAmount) {
+    //     require(
+    //         votes[msg.sender][_proposalId] == false,
+    //         "already staked once for this proposal"
+    //     );
+    //     rewardAmount = DaoStakeContract(phnxStakingContractAddress).stakeALT(
+    //         _altQuantity,
+    //         _days
+    //     );
+    //     votes[msg.sender][_proposalId] = true;
+    //     proposalList[_proposalId].totalVotes = proposalList[_proposalId]
+    //         .totalVotes
+    //         .add(1);
+    //     emit Voted(_proposalId, _altQuantity, _days, rewardAmount);
+    // }
 
     function withdrawCollateral(string calldata _proposalId)
         public
         whenNotPaused
     {
         require(
-            proposalList[_proposalId].status == 4,
+            proposalList[_proposalId].status == uint256(Status.COMPLETED),
             "Project status not completed"
         );
         IERC20(phnxContractAddress).transfer(
@@ -170,6 +169,11 @@ contract DaoSmartContract is OwnableUpgradeSafe, PausableUpgradeSafe {
             proposalList[_proposalId].status == uint256(Status.PENDING)
         ) {
             proposalList[_proposalId].status = uint256(Status.UPVOTE);
+            IERC20(phnxContractAddress).transferFrom(
+                proposalList[_proposalId].proposer,
+                address(this),
+                proposalList[_proposalId].colletralAmount
+            );
         }
 
         if (
@@ -191,7 +195,7 @@ contract DaoSmartContract is OwnableUpgradeSafe, PausableUpgradeSafe {
             proposalList[_proposalId].status = uint256(Status.REJECTED);
         }
 
-        require(proposalList[_proposalId].status == _status,"Status updated");
+        require(proposalList[_proposalId].status == _status, "Status updated");
         emit ProposalStatusUpdated(
             _proposalId,
             oldStatus,
@@ -201,16 +205,10 @@ contract DaoSmartContract is OwnableUpgradeSafe, PausableUpgradeSafe {
 
     function issueFunds(
         string calldata _proposalId,
-        uint256 _amount,
-        uint256 _milestoneNumber
+        uint256 _amount
     ) public onlyOwner {
-        require(proposalList[_proposalId].status == 3, "status not active");
+        require(proposalList[_proposalId].status == uint256(Status.ACTIVE), "status not active");
 
-        require(
-            proposalList[_proposalId].completedMilestones !=
-                proposalList[_proposalId].totalMilestones,
-            "mileStones completed"
-        );
         if (proposalList[_proposalId].fundsRequested != 0) {
             IERC20(phnxContractAddress).transfer(
                 proposalList[_proposalId].proposer,
@@ -226,13 +224,12 @@ contract DaoSmartContract is OwnableUpgradeSafe, PausableUpgradeSafe {
         }
         emit CompletedMilestone(
             _proposalId,
-            _milestoneNumber,
             proposalList[_proposalId].completedMilestones
         );
 
         if (proposalList[_proposalId].fundsRequested == 0) {
             uint256 oldStatus = proposalList[_proposalId].status;
-            proposalList[_proposalId].status = 4;
+            proposalList[_proposalId].status = uint256(Status.COMPLETED);
             emit ProposalStatusUpdated(
                 _proposalId,
                 oldStatus,
@@ -240,7 +237,7 @@ contract DaoSmartContract is OwnableUpgradeSafe, PausableUpgradeSafe {
             );
         }
 
-        emit FundsReleased(_proposalId, _amount, _milestoneNumber, msg.sender);
+        emit FundsReleased(_proposalId, _amount, msg.sender);
     }
 
     function getBaseInterest() public view returns (uint256) {
