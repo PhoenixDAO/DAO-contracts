@@ -1,7 +1,7 @@
 # PhoenixDAO
 
 # About:
-This repo contains contracts for PheonixDAO app.
+This repository contains contracts for PheonixDAO app.
 
 # Description:
 - User can submit proposal
