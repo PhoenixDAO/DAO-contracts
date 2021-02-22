@@ -11,12 +11,14 @@
   "dependencies": {
     "@openzeppelin/cli": "^2.8.2",
     "@openzeppelin/contracts-ethereum-package": "^3.0.0",
-    "@truffle/hdwallet-provider": "^1.0.39"
+    "@truffle/hdwallet-provider": "^1.0.39",
+    "snap": "^1.1.0"
   },
   "devDependencies": {
     "@openzeppelin/test-environment": "^0.1.4",
     "@openzeppelin/test-helpers": "^0.5.6",
     "chai": "^4.2.0",
+    "ethereum-waffle": "^3.1.1",
     "ganache-cli": "^6.9.1",
     "mocha": "^8.0.1"
   }

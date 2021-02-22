@@ -48,15 +48,15 @@
     "absolutePath": "contracts/DaoStakeInterface.sol",
     "exportedSymbols": {
       "DaoStakeContract": [
-        1331
+        1500
       ]
     },
-    "id": 1332,
+    "id": 1501,
     "license": null,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1316,
+        "id": 1485,
         "literals": [
           "solidity",
           "^",
@@ -73,9 +73,9 @@
         "contractKind": "interface",
         "documentation": null,
         "fullyImplemented": false,
-        "id": 1331,
+        "id": 1500,
         "linearizedBaseContracts": [
-          1331
+          1500
         ],
         "name": "DaoStakeContract",
         "nodeType": "ContractDefinition",
@@ -84,7 +84,7 @@
             "body": null,
             "documentation": null,
             "functionSelector": "69619aaf",
-            "id": 1325,
+            "id": 1494,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -92,17 +92,17 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 1321,
+              "id": 1490,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1318,
+                  "id": 1487,
                   "mutability": "mutable",
                   "name": "_altQuantity",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 1325,
+                  "scope": 1494,
                   "src": "76:20:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -111,7 +111,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1317,
+                    "id": 1486,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "76:7:7",
@@ -125,12 +125,12 @@
                 },
                 {
                   "constant": false,
-                  "id": 1320,
+                  "id": 1489,
                   "mutability": "mutable",
                   "name": "_days",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 1325,
+                  "scope": 1494,
                   "src": "98:13:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -139,7 +139,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1319,
+                    "id": 1488,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "98:7:7",
@@ -155,17 +155,17 @@
               "src": "75:37:7"
             },
             "returnParameters": {
-              "id": 1324,
+              "id": 1493,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1323,
+                  "id": 1492,
                   "mutability": "mutable",
                   "name": "rewardAmount",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 1325,
+                  "scope": 1494,
                   "src": "147:20:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -174,7 +174,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1322,
+                    "id": 1491,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "147:7:7",
@@ -189,7 +189,7 @@
               ],
               "src": "146:22:7"
             },
-            "scope": 1331,
+            "scope": 1500,
             "src": "58:111:7",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -199,7 +199,7 @@
             "body": null,
             "documentation": null,
             "functionSelector": "afd92762",
-            "id": 1330,
+            "id": 1499,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -207,23 +207,23 @@
             "nodeType": "FunctionDefinition",
             "overrides": null,
             "parameters": {
-              "id": 1326,
+              "id": 1495,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "200:2:7"
             },
             "returnParameters": {
-              "id": 1329,
+              "id": 1498,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1328,
+                  "id": 1497,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
                   "overrides": null,
-                  "scope": 1330,
+                  "scope": 1499,
                   "src": "234:7:7",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -232,7 +232,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
-                    "id": 1327,
+                    "id": 1496,
                     "name": "uint256",
                     "nodeType": "ElementaryTypeName",
                     "src": "234:7:7",
@@ -247,14 +247,14 @@
               ],
               "src": "233:9:7"
             },
-            "scope": 1331,
+            "scope": 1500,
             "src": "175:68:7",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 1332,
+        "scope": 1501,
         "src": "25:220:7"
       }
     ],
@@ -264,7 +264,7 @@
   "deployedBytecode": "0x",
   "compiler": {
     "name": "solc",
-    "version": "0.6.11+commit.5ef660b1.Emscripten.clang",
+    "version": "0.6.12+commit.27d51765.Emscripten.clang",
     "optimizer": {
       "enabled": false,
       "runs": 200

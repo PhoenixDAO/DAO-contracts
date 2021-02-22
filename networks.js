@@ -12,7 +12,10 @@ module.exports = {
     },
     rinkeby: {
       provider: () => new HDWalletProvider(
-        "0x3C94ED71BA24F492A9DF68190BD58E2F9DA9FAFD69201EFCF59B0353731A6AE6", `https://rinkeby.infura.io/v3/e3c9ab0b78e946b486fa9c7b5f26c3c1`
+        // 0x609a8a9ef6fa45955886ea323a70ab0ded6b5a656214fea4680605557c1d88b8
+        //0x5d4af089d553bd1211888e81a41cf421e5e8f3e7d8e685675bdfcc47d79a5ca3
+        //0xc569f7f4e2ff5ce8c4c7cee9aa0afdc50d9f590bdb8a0d94686d1d0d97eaed01
+        "0x3c94ed71ba24f492a9df68190bd58e2f9da9fafd69201efcf59b0353731a6ae6", `https://rinkeby.infura.io/v3/e3c9ab0b78e946b486fa9c7b5f26c3c1`
       ),
       networkId: "*",
       gasPrice: 5e9
