@@ -7,6 +7,9 @@ import "@openzeppelin/contracts-ethereum-package/contracts/access/Ownable.sol";
 contract MulitpleOwners is OwnableUpgradeSafe {
 
     mapping(address => bool) public isOwner;
+    event AddedSubOwner(address newOwner);
+    event RemovedSubOwner(address newOwner);
+    
     modifier onlyOwners(){
         require(isOwner[_msgSender()], "Ownable: caller is not one of many owner");
          _;
