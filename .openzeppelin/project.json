@@ -9,8 +9,8 @@
   "compiler": {
     "compilerSettings": {
       "optimizer": {
-        "enabled": true,
-        "runs": "100"
+        "enabled": false,
+        "runs": "200"
       }
     },
     "typechain": {
